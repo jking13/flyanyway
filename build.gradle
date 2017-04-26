@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+version="0.0.1"
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+jar {
+    baseName = 'flyanyway'
+    version =  "$version"
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+
+    testCompile("org.mockito:mockito-core:1.9.5")
+    testCompile("org.testng:testng:6.8.8")
+}
+
+test {
+        useTestNG() 
+    }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4.1'
+}
